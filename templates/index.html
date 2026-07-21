@@ -1,0 +1,23 @@
+
+<!doctype html>
+<html><head>
+<title>DevOps Task Tracker</title>
+<link rel="stylesheet" href="/static/style.css">
+</head><body>
+<div class="box">
+<h1>DevOps Task Tracker</h1>
+<form action="/add" method="post">
+<input name="title" placeholder="Enter task">
+<button>Add</button>
+</form>
+<ul>
+{% for t in tasks %}
+<li>
+{% if t[2] %}<s>{{t[1]}}</s>{% else %}{{t[1]}}{% endif %}
+<a href="/complete/{{t[0]}}">Complete</a>
+<a href="/delete/{{t[0]}}">Delete</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+</body></html>
