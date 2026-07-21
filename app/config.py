@@ -1,6 +1,16 @@
-class Config:
-    SECRET_KEY = "dev-secret-key"
+import os
 
-    SQLALCHEMY_DATABASE_URI = "sqlite:///tasks.db"
+
+class Config:
+
+    SECRET_KEY = os.getenv(
+        "SECRET_KEY",
+        "dev-secret-key"
+    )
+
+    SQLALCHEMY_DATABASE_URI = os.getenv(
+        "DATABASE_URL",
+        "sqlite:///tasks.db"
+    )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False

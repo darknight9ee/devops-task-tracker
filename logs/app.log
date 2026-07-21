@@ -1,0 +1,30 @@
+2026-07-21 16:26:09,762 INFO Application Started
+2026-07-21 16:26:09,816 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.154:5000
+2026-07-21 16:26:09,816 INFO [33mPress CTRL+C to quit[0m
+2026-07-21 16:26:09,818 INFO  * Restarting with stat
+2026-07-21 16:26:10,762 INFO Application Started
+2026-07-21 16:26:10,776 WARNING  * Debugger is active!
+2026-07-21 16:26:10,781 INFO  * Debugger PIN: 975-978-504
+2026-07-21 16:26:22,791 INFO 127.0.0.1 - - [21/Jul/2026 16:26:22] "GET / HTTP/1.1" 200 -
+2026-07-21 16:26:25,875 INFO Task deleted: Learn Jenkins
+2026-07-21 16:26:25,878 INFO 127.0.0.1 - - [21/Jul/2026 16:26:25] "[32mGET /delete/2 HTTP/1.1[0m" 302 -
+2026-07-21 16:26:25,890 INFO 127.0.0.1 - - [21/Jul/2026 16:26:25] "GET / HTTP/1.1" 200 -
+2026-07-21 16:26:29,923 INFO Task completed: Learn Docker
+2026-07-21 16:26:29,926 INFO 127.0.0.1 - - [21/Jul/2026 16:26:29] "[32mGET /complete/4 HTTP/1.1[0m" 302 -
+2026-07-21 16:26:29,940 INFO 127.0.0.1 - - [21/Jul/2026 16:26:29] "GET / HTTP/1.1" 200 -
+2026-07-21 16:59:43,648 INFO  * Detected change in 'C:\\Users\\Ankit Rathee\\Downloads\\devops-task-tracker\\devops-task-tracker\\app\\routes.py', reloading
+2026-07-21 16:59:43,812 INFO  * Restarting with stat
+2026-07-21 16:59:44,851 INFO Application Started
+2026-07-21 16:59:44,874 WARNING  * Debugger is active!
+2026-07-21 16:59:44,880 INFO  * Debugger PIN: 975-978-504
+2026-07-21 17:00:13,716 INFO  * Detected change in 'C:\\Users\\Ankit Rathee\\Downloads\\devops-task-tracker\\devops-task-tracker\\app\\routes.py', reloading
+2026-07-21 17:00:14,362 INFO  * Restarting with stat
+2026-07-21 17:00:15,225 INFO Application Started
+2026-07-21 17:00:15,243 WARNING  * Debugger is active!
+2026-07-21 17:00:15,248 INFO  * Debugger PIN: 975-978-504
+2026-07-21 17:00:26,551 INFO 127.0.0.1 - - [21/Jul/2026 17:00:26] "GET / HTTP/1.1" 200 -
+2026-07-21 17:00:31,546 INFO 127.0.0.1 - - [21/Jul/2026 17:00:31] "GET /health HTTP/1.1" 200 -
+2026-07-21 17:01:06,025 INFO 127.0.0.1 - - [21/Jul/2026 17:01:06] "GET /version HTTP/1.1" 200 -

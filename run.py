@@ -1,7 +1,13 @@
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from app import create_app
+from app.logger import logger
 
 app = create_app()
 
+logger.info("Application Started")
 
 if __name__ == "__main__":
     app.run(
