@@ -1,21 +1,32 @@
 pipeline {
     agent any
+
     stages {
-        stage(' Checkout') {
+
+        stage('Checkout') {
             steps {
-                echo 'Checking out the code...'
+                echo 'Checking out source code...'
                 checkout scm
             }
         }
-        stage('Python Setup') {
+
+        stage('Verify Build Environment') {
             steps {
-                sh '''
-                python3 --version
-                python3 -m venv venv
-                . venv/bin/activate
-                pip install --upgrade pip
-                pip install -r requirements.txt
-                '''
+                sh 'git --version'
+                sh 'python3 --version'
+                sh 'docker --version'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t devops-task-tracker:latest .'
+            }
+        }
+
+        stage('List Images') {
+            steps {
+                sh 'docker images'
             }
         }
     }
