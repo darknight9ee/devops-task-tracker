@@ -1,11 +1,11 @@
 pipeline {
+
     agent any
 
     stages {
 
         stage('Checkout') {
             steps {
-                echo 'Checking out source code...'
                 checkout scm
             }
         }
@@ -18,16 +18,23 @@ pipeline {
             }
         }
 
+        stage('Run Tests') {
+            steps {
+                sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    python -m pip install --upgrade pip
+                    python -m pip install -r requirements.txt
+                    python -m pytest
+                '''
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t devops-task-tracker:latest .'
             }
         }
 
-        stage('List Images') {
-            steps {
-                sh 'docker images'
-            }
-        }
     }
 }
