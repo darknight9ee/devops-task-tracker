@@ -86,6 +86,7 @@ pipeline {
                 sh '''
                 sleep 20
 
+                docker exec task-tracker \
                 curl --fail http://localhost:5000/health
                 '''
             }
