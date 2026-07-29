@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "darknight9ee/devops-task-tracker"
+        IMAGE_NAME = "darknight7ee/devops-task-tracker"
     }
 
     stages {
@@ -60,9 +60,9 @@ pipeline {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 
-                        docker tag devops-task-tracker:latest darknight9ee/devops-task-tracker:latest
+                        docker tag devops-task-tracker:latest darknight7ee/devops-task-tracker:latest
 
-                        docker push darknight9ee/devops-task-tracker:latest
+                        docker push darknight7ee/devops-task-tracker:latest
 
                         docker logout
                     '''
