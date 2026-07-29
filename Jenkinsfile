@@ -44,8 +44,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh '''
-                docker build -t $IMAGE_NAME:latest .
-                docker tag $IMAGE_NAME:latest $IMAGE_NAME:${BUILD_NUMBER}
+                docker build -t $IMAGE_NAME:${BUILD_NUMBER} .
+                docker tag $IMAGE_NAME:${BUILD_NUMBER} $IMAGE_NAME:latest
                 '''
             }
         }
@@ -58,11 +58,12 @@ pipeline {
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
                     sh '''
-                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                    echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 
-                        docker push darknight9ee/devops-task-tracker:latest
+                    docker push $IMAGE_NAME:${BUILD_NUMBER}
+                    docker push $IMAGE_NAME:latest
 
-                        docker logout
+                    docker logout
                     '''
                 }
             }
@@ -70,11 +71,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                docker compose down
+                cd /home/ubuntu/deployment
 
-                docker compose pull
+                echo IMAGE_TAG=${BUILD_NUMBER} > image.env
 
-                docker compose up -d
+                docker compose --env-file image.env pull
+
+                docker compose --env-file image.env up -d
                 '''
             }
         }
