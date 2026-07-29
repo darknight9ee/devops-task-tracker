@@ -60,13 +60,31 @@ pipeline {
                     sh '''
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
 
-                        docker tag devops-task-tracker:latest darknight9ee/devops-task-tracker:latest
-
                         docker push darknight9ee/devops-task-tracker:latest
 
                         docker logout
                     '''
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh '''
+                docker compose down
+
+                docker compose pull
+
+                docker compose up -d
+                '''
+            }
+        }
+        stage('Health Check') {
+            steps {
+                sh '''
+                sleep 20
+
+                curl --fail http://localhost:5000/health
+                '''
             }
         }
     }
