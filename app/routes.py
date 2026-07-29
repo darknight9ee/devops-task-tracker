@@ -1,7 +1,8 @@
-from .logger import logger
 from flask import Blueprint, render_template, request, redirect
+from sqlalchemy import text
 
 from .database import db
+from .logger import logger
 from .models import Task
 
 main = Blueprint("main", __name__)
@@ -25,6 +26,7 @@ def index():
         completed_tasks=completed_tasks,
         pending_tasks=pending_tasks
     )
+
 
 @main.route("/add", methods=["POST"])
 def add():
@@ -68,6 +70,7 @@ def delete(id):
 
     return redirect("/")
 
+
 @main.route("/health")
 def health():
 
@@ -82,22 +85,15 @@ def health():
         database = "disconnected"
 
     return {
-
         "status": "healthy",
-
         "database": database
-
     }
+
 
 @main.route("/version")
 def version():
 
     return {
-
         "application": "DevOps Task Tracker",
-
         "version": "1.0.0"
-
     }
-
-from sqlalchemy import text
