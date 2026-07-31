@@ -105,7 +105,7 @@ pipeline {
 
                 kubectl get pods
 
-                kubectl get svc task-tracker
+                kubectl get svc task-tracker-service
                 '''
             }
         }
