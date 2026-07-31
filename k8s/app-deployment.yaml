@@ -7,10 +7,12 @@ spec:
   selector:
     matchLabels:
       app: task-tracker
+      
   template:
     metadata:
       labels:
         app: task-tracker
+
     spec:
       containers:
         - name: task-tracker
@@ -18,6 +20,8 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 5000
+
+
           livenessProbe:
             httpGet:
               path: /health
@@ -27,6 +31,7 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 3
 
+
           readinessProbe:
             httpGet:
               path: /health
@@ -35,6 +40,18 @@ spec:
             periodSeconds: 5
             timeoutSeconds: 3
             failureThreshold: 3
+
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+
           env:
             - name: DATABASE_URL
               valueFrom:
