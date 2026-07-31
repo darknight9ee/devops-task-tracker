@@ -19,11 +19,13 @@ spec:
           ports:
             - containerPort: 5000
           env:
-          - name: DATABASE_URL
-            value: postgresql://postgres:postgres123@postgres-service:5432/taskdb
-
-          - name: SECRET_KEY
-            valueFrom:
-              secretKeyRef:
-                name: postgres-secret
-                key: SECRET_KEY
+            - name: DATABASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DATABASE_URL
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: SECRET_KEY
