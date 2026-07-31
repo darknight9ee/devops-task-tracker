@@ -1,6 +1,6 @@
 apiVersion:  apps/v1
 kind: Deployment
-metaqdata:
+metadata:
   name: task-tracker
 spec:
   replicas: 1
