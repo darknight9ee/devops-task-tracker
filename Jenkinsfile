@@ -67,6 +67,7 @@ pipeline {
                     '''
                 }
             }
+        }
 
 /*           This stage is for when you want to deploy using docker-compose.yml file.
         }
