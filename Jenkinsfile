@@ -67,6 +67,8 @@ pipeline {
                     '''
                 }
             }
+
+/*           This stage is for when you want to deploy using docker-compose.yml file.
         }
         stage('Deploy') {
             steps {
@@ -81,13 +83,28 @@ pipeline {
                 '''
             }
         }
+*/
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                kubectl set image deployment/task-tracker \
+                task-tracker=${IMAGE_NAME}:${BUILD_NUMBER}
+
+                kubectl rollout status deployment/task-tracker --timeout=180s
+                '''
+            }
+        }
+
         stage('Health Check') {
             steps {
                 sh '''
-                sleep 20
+                sleep 15
 
-                docker exec task-tracker \
-                curl --fail http://localhost:5000/health
+                kubectl rollout status deployment/task-tracker
+
+                kubectl get pods
+
+                kubectl get svc task-tracker
                 '''
             }
         }
