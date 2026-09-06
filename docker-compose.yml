@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    image: darknight9ee/devops-task-tracker:${IMAGE_TAG}
+    image: darknight7ee/devops-task-tracker:${IMAGE_TAG:-latest}
     container_name: task-tracker
     ports:
       - "5000:5000"

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: task-tracker
-          image: darknight9ee/devops-task-tracker:latest
+          image: darknight7ee/devops-task-tracker:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5000

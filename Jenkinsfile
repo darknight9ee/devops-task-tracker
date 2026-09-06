@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "darknight9ee/devops-task-tracker"
+        IMAGE_NAME = "darknight7ee/devops-task-tracker"
     }
 
     stages {
