@@ -106,6 +106,8 @@ pipeline {
                 kubectl get pods
 
                 kubectl get svc task-tracker-service
+
+                curl --fail http://localhost:30080/health
                 '''
             }
         }
